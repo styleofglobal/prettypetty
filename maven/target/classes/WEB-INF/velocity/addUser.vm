@@ -1,0 +1,27 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+
+
+<h1>#springMessage("user.form.title")</h1>
+
+<form method="post" action="addUser.html">
+	<input type="hidden" name="id">
+    <fieldset>
+        <div class="form-row">
+            <label for="Username">#springMessage("user.form.username"):</label>
+            <span class="input">#springBind("user.username")<input type="text" name="username" /></span>
+        </div>       
+        <div class="form-row">
+            <label for="Role">#springMessage("user.form.role"):</label>
+            <span class="input">#springBind("user.role")<input type="text" name="role" /></span>
+        </div>
+        <div class="form-buttons">
+            <div class="button"><input type="submit" value="#springMessage("button.save")" /></div>
+        </div>        
+    </fieldset>
+</form:form>
+</body>
+</html>
