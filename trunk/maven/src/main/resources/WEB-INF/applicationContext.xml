@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location"
+			value="/WEB-INF/mysql.jdbc.properties" />
+	</bean>
+
+	<!-- START data sources ================================================ -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+	<!-- START data sources ================================================ -->
+
+
+	<!-- START Hibernate =================================================== -->
+	<bean id="hibernateProperties"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="properties">
+			<props>
+				<prop key="hibernate.hbm2ddl.auto">
+					${hibernate.hbm2ddl.auto}
+				</prop>
+				<prop key="hibernate.dialect">
+					${hibernate.dialect}
+				</prop>
+				<prop key="hibernate.query.substitutions">
+					${hibernate.query.substitutions}
+				</prop>
+				<prop key="hibernate.show_sql">
+					${hibernate.show_sql}
+				</prop>
+				<prop key="hibernate.c3p0.minPoolSize">
+					${hibernate.c3p0.minPoolSize}
+				</prop>
+				<prop key="hibernate.c3p0.maxPoolSize">
+					${hibernate.c3p0.maxPoolSize}
+				</prop>
+				<prop key="hibernate.c3p0.timeout">
+					${hibernate.c3p0.timeout}
+				</prop>
+				<prop key="hibernate.c3p0.max_statement">
+					${hibernate.c3p0.max_statement}
+				</prop>
+				<prop key="hibernate.c3p0.testConnectionOnCheckout">
+					${hibernate.c3p0.testConnectionOnCheckout}
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<ref local="hibernateProperties" />
+		</property>
+		<property name="annotatedClasses">
+			<list>
+				<value>com.jjpeople.bean.User</value>
+			</list>
+		</property>
+	</bean>	
+
+	<!-- END Hibernate ===================================================== -->
+
+	<!-- START DAO ========================================================= -->
+	<bean id="UserDAO" class="com.jjpeople.dao.UserDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- END DAO =========================================================== -->
+</beans>
