@@ -1,4 +1,4 @@
-package com.jjpeople.controller;
+package com.prettypetty.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

@@ -1,4 +1,4 @@
-package com.jjpeople.controller;
+package com.prettypetty.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -7,8 +7,8 @@ import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
-import com.jjpeople.bean.User;
-import com.jjpeople.dao.UserDAO;
+import com.prettypetty.bean.User;
+import com.prettypetty.dao.UserDAO;
 
 public class LoginController implements Controller {
 	private UserDAO userDAO;

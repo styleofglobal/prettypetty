@@ -68,7 +68,7 @@
 		</property>
 		<property name="annotatedClasses">
 			<list>
-				<value>com.jjpeople.bean.User</value>
+				<value>com.prettypetty.bean.User</value>
 			</list>
 		</property>
 	</bean>	
@@ -76,7 +76,7 @@
 	<!-- END Hibernate ===================================================== -->
 
 	<!-- START DAO ========================================================= -->
-	<bean id="UserDAO" class="com.jjpeople.dao.UserDAOImpl">
+	<bean id="UserDAO" class="com.prettypetty.dao.UserDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<!-- END DAO =========================================================== -->

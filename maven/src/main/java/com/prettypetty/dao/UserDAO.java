@@ -1,9 +1,9 @@
-package com.jjpeople.dao;
+package com.prettypetty.dao;
 
 import java.util.List;
 
-import com.jjpeople.bean.User;
-import com.jjpeople.dao.exceptions.NotExistException;
+import com.prettypetty.bean.User;
+import com.prettypetty.dao.exceptions.NotExistException;
 
 public interface UserDAO {
 	public void saveUser(User user);
