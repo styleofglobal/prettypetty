@@ -1,4 +1,4 @@
-package com.jjpeople.controller;
+package com.prettypetty.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,8 +8,8 @@ import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
-import com.jjpeople.bean.User;
-import com.jjpeople.dao.UserDAO;
+import com.prettypetty.bean.User;
+import com.prettypetty.dao.UserDAO;
 
 public class AddUserController extends SimpleFormController{
 	private UserDAO userDAO;

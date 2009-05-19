@@ -1,4 +1,4 @@
-package com.jjpeople.dao.exceptions;
+package com.prettypetty.dao.exceptions;
 
 @SuppressWarnings("serial")
 public class NotExistException extends Exception {

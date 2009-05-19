@@ -1,10 +1,10 @@
-package com.jjpeople.dao;
+package com.prettypetty.dao;
 
 
 import java.util.List;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-import com.jjpeople.bean.User;
-import com.jjpeople.dao.exceptions.NotExistException;
+import com.prettypetty.bean.User;
+import com.prettypetty.dao.exceptions.NotExistException;
 
 public class UserDAOImpl extends HibernateDaoSupport implements UserDAO{
 	/**

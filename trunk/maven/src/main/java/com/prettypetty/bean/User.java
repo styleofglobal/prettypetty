@@ -1,4 +1,4 @@
-package com.jjpeople.bean;
+package com.prettypetty.bean;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -60,28 +60,28 @@
 	
 	<!-- pathContoller -->
 	<bean id="pathController"
-		class="com.jjpeople.controller.GenericController" />
+		class="com.prettypetty.controller.GenericController" />
 
 	<!--login-->
-	<bean id="login" class="com.jjpeople.controller.LoginController">
+	<bean id="login" class="com.prettypetty.controller.LoginController">
 		<property name="userDAO" ref="UserDAO" />
 	</bean>
 
 	<!--addUser-->
 	<bean id="addUser"
-		class="com.jjpeople.controller.AddUserController">
+		class="com.prettypetty.controller.AddUserController">
 		<property name="userDAO" ref="UserDAO" />
 	</bean>
 
 	<!--listUsers-->
 	<bean id="listUsers"
-		class="com.jjpeople.controller.ListUsersController">
+		class="com.prettypetty.controller.ListUsersController">
 		<property name="userDAO" ref="UserDAO" />
 	</bean>
 	
 	<!--Users report-->
 	<bean id="usersReport"
-		class="com.jjpeople.controller.UserReportController">
+		class="com.prettypetty.controller.UserReportController">
 		<property name="userDAO" ref="UserDAO" />
 	</bean>
 
