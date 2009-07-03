@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>SMSLib v3.4.0 - Release Notes</title>
+</head>
+
+<body style="font-family:Segoe UI; font-size:0.8em;">
+
+<h1>SMSLib v3.4.0 (Mar 29th, 2009)<br />Release Notes</h1>
+
+<p><br /></p>
+
+<h3>Upgrade path from v3.3.3</h3>
+<p>Please note the following issues while planning your upgrade:</p>
+<ul>
+<li>SMSLib v3.4 is <b>incompatible</b> with the previous v3.3.3. The changes are not much though, and you will be able to fix them by just reviewing the compile errors.</li>
+<li>The logging subsystem has changed from log4j to slf4j. Please review the <a href="http://code.google.com/p/smslib/wiki/Installation">Installation Instructions</a> before proceeding.</li>
+<li>New fields have been added in the database tables (SMSServer Database Interface). Please review the relevant <a href="http://code.google.com/p/smslib/wiki/SMSServer_DB_Interface">DB Interface</a> page and adjust your database accordingly.</li>
+<li>Sample DB scripts for Microsoft SQL Server, MySQL and Oracle are now available in the <code>/misc/SMSServer/Database Scripts/</code> directory.</li>
+<li>The JMX, Email and XML SMSServer interfaces have been <span style="color:red;">deprecated</span>. You are advised to switch to the Database Interface if possible.</li>
+<li>In an attempt to reduce the dependencies for compiling SMSLib/SMSServer, some SMSServer interfaces have been moved out of the main source tree. These interfaces can be found in the <code>/misc/SMSServer/Interfaces/</code> directory. Please follow the installation instructions found on each interface documentation page if you want to install and work with them.</li>
+</ul>
+<p>Some important bugs found in v3.3.3 have been correct in this release - you are advised to upgrade the soonest possible.</p>
+
+<h3>Enhancements / Fixes</h3>
+<ol>
+<li>SMSLib: Switched to Simple Logging Facade for Java, please review the <a href="http://code.google.com/p/smslib/wiki/Installation"></a>installation instructions (<a href="http://code.google.com/p/smslib/issues/detail?id=91">#91</a>)</li>
+<li>SMSLib: Bug resulting in Null Pointer Exception in logger (<a href="http://code.google.com/p/smslib/issues/detail?id=142">#142</a>)</li>
+<li>SMSLib: SUBMIT messages are now ignored (<a href="http://code.google.com/p/smslib/issues/detail?id=164">#164</a>)</li>
+<li>SMSLib: Router bug: Outbound messages did not default to the "*" character, resulting in routing errors (<a href="http://code.google.com/p/smslib/issues/detail?id=146">#146</a>)</li>
+<li>SMSLib: Some background threads moved to a central task provisioning system, based on the Executor framework</li>
+<li>SMSLib: New ATHandler for Wavecom SunTraveller CDMA modem (contributed by Ernas Moethar) (<a href="http://code.google.com/p/smslib/issues/detail?id=144">#144</a>)</li>
+<li>SMSLib: Comm library exceptions and errors where lost in the reflection jungle (<a href="http://code.google.com/p/smslib/issues/detail?id=147">#147</a>)</li>
+<li>SMSLib: Allow SMSServer to load external classes (<a href="http://code.google.com/p/smslib/issues/detail?id=149">#149</a>)</li>
+<li>SMSLib: LeastLoadLoadBalancer <b>is no longer available</b>.</li>
+<li>SMSLib: Added basic phonebook management (see <a href="http://code.google.com/p/smslib/wiki/SMSLib_Contacts">this page</a>)</li>
+<li>SMSLib: Test Gateway did not setup a Gateway ID (<a href="http://code.google.com/p/smslib/issues/detail?id=163">#163</a>)</li>
+<li>SMSLib: Fixed condition which could lead to NullPointer &amp; NumberFormat exceptions for some non-compliant phones (<a href="http://code.google.com/p/smslib/issues/detail?id=167">#167</a>)</li>
+<li>SMSLib: Implemented the Group Sending functionality (<a href="http://code.google.com/p/smslib/issues/detail?id=169">#169</a>, see <a href="http://code.google.com/p/smslib/wiki/SMSLib_Groups">this page</a>)</li>
+<li>SMSLib: New MC35i modem AT Handler (<a href="http://code.google.com/p/smslib/issues/detail?id=179">#179</a>)</li>
+<li>SMSLib: Binary telnet option for IP modems now available (<a href="http://code.google.com/p/smslib/issues/detail?id=180">#180</a>)</li>
+<li>SMSServer: Error in db interface when auto-delivery operation is enabled (<a href="http://code.google.com/p/smslib/issues/detail?id=183">#183</a>)</li>
+<li>SMSServer: DB errors go unnoticed (<a href="http://code.google.com/p/smslib/issues/detail?id=184">#184</a>)</li>
+<li>SMSLib: TPDU Data Coding Group Issue (<a href="http://code.google.com/p/smslib/issues/detail?id=187">#187</a>)</li>
+<li>SMSLib: Flash messaging did not work as expected (<a href="http://code.google.com/p/smslib/issues/detail?id=188">#188</a>)</li>
+<li>SMSServer: Add wap si capability via the SMSServer database interface (<a href="http://code.google.com/p/smslib/issues/detail?id=185">#185</a>)</li>
+<li>SMSServer: Added "smsc_number" in configuration file / gateway definition for serial and IP modems (<a href="http://code.google.com/p/smslib/issues/detail?id=193">#193</a>)</li>
+<li>SMSServer: Email interface issues(<a href="http://code.google.com/p/smslib/issues/detail?id=191">#191</a>)</li>
+<li>SMSServer: If no directives are given, the configuration file is looked upon in the current directory</li>
+<li>SMSServer: JVM hanged when attempting to stop SMSServer with Ctrl-C (<a href="http://code.google.com/p/smslib/issues/detail?id=195">#195</a>)</li>
+<li>SMSLib: Do not try to register to GSM network for ever - throw GatewayException after trying for a couple of times (<a href="http://code.google.com/p/smslib/issues/detail?id=194">#194</a>)</li>
+<li>SMSServer: Set explicit fields in SQL-SELECT statements (<a href="http://code.google.com/p/smslib/issues/detail?id=190">#190</a>)</li>
+<li>SMSServer: When no directives are given, SMSServer searches for the configuration file in the current directory.</li>
+<li>SMSLib: Renamed and added more Gateway Status fields (AGAteway.GatewayStatuses enumeration)</li>
+</ol>
+
+<p>For more information, please visit the <a href="http://smslib.org">SMSLib Web Site.</a></p>
+</body>
+
+</html>
