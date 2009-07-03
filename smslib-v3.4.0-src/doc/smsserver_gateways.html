@@ -1,0 +1,106 @@
+<h1>SMSServer Gateways</h1>
+
+<h2>Introduction</h2>
+<p>Gateways represent devices or services capable of sending and/or receiving SMS messages.</p>
+<p>SMSServer supports the following gateways, which are directly mapped to SMSLib core library's gateways:</p>
+<ul>
+<li>Serial Modem</li>
+<li>IP Modem</li>
+<li>Clickatell</li>
+</ul>
+
+<h2>Serial modem</h2>
+<p>This gateway is used for gsm modems connected via a serial port.</p>
+
+<h3>Configuration File</h3>
+<p>This interface requires the following settings in SMSServer's configuration file:</p>
+<table border='1' cellpadding='7' cellspacing='2'>
+<tr><td><b>Option</b></td><td><b>Description</b></td></tr>
+<tr><td>port</td><td>the comm port to use, for example <b>COM1</b> or <b>/dev/ttyS0</b>.</td></tr>
+<tr><td>baudrate</td><td>the baudrate, for example <b>19200</b>.</td></tr>
+<tr><td>manufacturer</td><td>the manufacturer string, for example <b>Nokia</b>.</td></tr>
+<tr><td>model</td><td>the modem string, for example <b>6310i</b>.</td></tr>
+<tr><td>protocol</td><td>the protocol in use, either <b>pdu</b> or <b>text</b>. The <b>pdu</b> is the default and the <b>preferred</b> one!</td></tr>
+<tr><td>pin</td><td>the SIM PIN.</td></tr>
+<tr><td>inbound</td><td><b>yes</b> if the gateway should be treaded asan inbound gateway, otherwise <b>no</b>.</td></tr>
+<tr><td>outbound</td><td><b>yes</b> if the gateway should be treaded as an outbound gateway, otherwise <b>no</b>.</td></tr>
+<tr><td>smsc_number</td><td>Use this option to set/override the SMSC definition. Leave blank to use the default.</td></tr>
+</table>
+<br />
+<p>Example:</p>
+<blockquote>
+gateway.0=myModem, SerialModem<br />
+myModem.port=COM1<br />
+myModem.baudrate=19200<br />
+myModem.manufacturer=Nokia<br />
+myModem.model=6310i<br />
+myModem.protocol=PDU<br />
+myModem.pin=0000<br />
+myModem.inbound=yes<br />
+myModem.outbound=yes<br />
+myModem.smsc_number=<br />
+</blockquote>
+
+<h2>IP modem</h2>
+<p>This gateway is used for gsm modems connected via an IP port.</p>
+
+<h3>Installation</h3>
+<p>Starting from v3.4, the IP Modem Gateway class file has been pulled out of the main source directory. In order to install and use it, please do the following:</p>
+<ul>
+<li>Copy file <code>IPModem.java</code> (found in the <code>/misc/SMSServer/Gateways/Stable/</code> directory) to the <code>/src/java/org/smslib/smsserver/gateways/</code> directory.
+<li>Download Apache Jakarta Commons/NET from <a href="http://commons.apache.org/downloads/download_net.cgi">here</a>. You need to have the <code>commons-net-2.0.jar</code> file (2.0 was the current version at the time of this writing) somewhere in your classpath or in Java's lib/ext directories.</li>
+</ul>
+
+<h3>Configuration File</h3>
+<p>This interface requires the following settings in SMSServer's configuration file:</p>
+<table border='1' cellpadding='7' cellspacing='2'>
+<tr><td><b>Option</b></td><td><b>Description</b></td></tr>
+<tr><td>ip</td><td>the IP address of the modem, for example <b>192.168.100.110</b>.</td></tr>
+<tr><td>port</td><td>the IP port to which the modem is listening, for example <b>9900</b>.</td></tr>
+<tr><td>manufacturer</td><td>the manufacturer string, for example <b>Nokia</b>.</td></tr>
+<tr><td>model</td><td>the modem string, for example <b>6310i</b>.</td></tr>
+<tr><td>protocol</td><td>the protocol in use, either <b>pdu</b> or <b>text</b>. The <b>pdu</b> is the default and the <b>preferred</b> one!</td></tr>
+<tr><td>ipprotocol</td><td>the telnet protocol to use, either <b>text</b> or <b>binary</b>.</td></tr>
+<tr><td>pin</td><td>the SIM PIN.</td></tr>
+<tr><td>inbound</td><td><b>yes</b> if the gateway should be treaded asan inbound gateway, otherwise <b>no</b>.</td></tr>
+<tr><td>outbound</td><td><b>yes</b> if the gateway should be treaded as an outbound gateway, otherwise <b>no</b>.</td></tr>
+<tr><td>smsc_number</td><td>Use this option to set/override the SMSC definition. Leave blank to use the default.</td></tr>
+</table>
+<br />
+<p>Example:</p>
+<blockquote>
+gateway.0=myModem, IPModem<br />
+myModem.ip=192.168.100.110<br />
+myModem.port=9900<br />
+myModem.manufacturer=Nokia<br />
+myModem.model=6310i<br />
+myModem.protocol=PDU<br />
+myModem.pin=0000<br />
+myModem.inbound=yes<br />
+myModem.outbound=yes<br />
+myModem.smsc_number=<br />
+</blockquote>
+
+<h2>Clickatell (Http)</h2>
+<p>This gateway is used for the Clickatell HTTP interface.</p>
+
+<h3>Configuration File</h3>
+<p>This interface requires the following settings in SMSServer's configuration file:</p>
+<table border='1' cellpadding='7' cellspacing='2'>
+<tr><td><b>Option</b></td><td><b>Description</b></td></tr>
+<tr><td>api_id</td><td>Clickatell API ID.</td></tr>
+<tr><td>username</td><td>Clickatell Username.</td></tr>
+<tr><td>password</td><td>Clickatell Password.</td></tr>
+<tr><td>secure</td><td>If set to <b>yes</b>, the gateway will use a secure (https) connection.</td></tr>
+<tr><td>outbound</td><td><b>yes</b> if the gateway should be treaded as an outbound gateway, otherwise <b>no</b>.</td></tr>
+</table>
+<br />
+<p>Example:</p>
+<blockquote>
+gateway.0=myClickatell, ClickatellHttp<br />
+myClickatell.api_id=1234<br />
+myClickatell.username=thanasis<br />
+myClickatell.password=password<br />
+myClickatell.secure=no<br />
+myClickatell.outbound=yes<br />
+</blockquote>
