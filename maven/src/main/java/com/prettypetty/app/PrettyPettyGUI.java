@@ -35,10 +35,21 @@ public class PrettyPettyGUI extends JFrame implements ActionListener {
         desktop.setDragMode(JDesktopPane.OUTLINE_DRAG_MODE);
 	}
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		if ("Quit".equals(e.getActionCommand()))
+        { 
+        	//quit
+            quit();
+        }
 
 	}
+	protected void quit() 
+    {
+    	JOptionPane.showMessageDialog(null,"Pretty Petty!");
+        System.exit(0);
+        
+    }
 	protected JMenuBar createMenuBar() 
     {
         JMenuBar menuBar = new JMenuBar();
@@ -65,7 +76,7 @@ public class PrettyPettyGUI extends JFrame implements ActionListener {
     }
 	
 	@SuppressWarnings("unused")
-	private static void createAndShowGUI() 
+	static void createAndShowGUI() 
     {
         //Make sure we have nice window decorations.
         JFrame.setDefaultLookAndFeelDecorated(true);
